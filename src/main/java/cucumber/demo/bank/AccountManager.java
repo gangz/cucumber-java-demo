@@ -23,5 +23,8 @@ public class AccountManager {
 	public Account getAccount(String accountId) {
 		return accounts.get(accountId);
 	}
+	public void reset() {
+		accounts = new HashMap<>();
+	}
 
 }
