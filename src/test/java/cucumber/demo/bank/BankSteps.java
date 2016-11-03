@@ -4,6 +4,8 @@ import cucumber.api.java.en.*;
 import static org.junit.Assert.*;
 public class BankSteps {
 
+	private boolean lastTransferResult;
+
 	@Given("^Create an account '(\\w+)'")
 	public void create_an_account(String accountId) throws Throwable {
 		AccountManager.instance().create(accountId);
@@ -21,13 +23,19 @@ public class BankSteps {
 		Account accountFrom = AccountManager.instance().getAccount(accountOrigin);
 		Account accountTo = AccountManager.instance().getAccount(accountDestination);
 		AccountTransferService service = new AccountTransferService();
-		service.transfer(accountFrom, accountTo, amount);
+		lastTransferResult = service.transfer(accountFrom, accountTo, amount);
 	}
 	
 	@Then("^The account '(\\w+)' should have (\\d+)$")
 	public void account_should_have(String accountId, int amount) throws Throwable {
 		Account account = AccountManager.instance().getAccount(accountId);
 		assertEquals(amount,account.getBalance());
+	}
+
+	@Then("^The transfer result should be '(.*)'$")
+	public void the_transfer_result_should_be_fail(String result) throws Throwable {
+		boolean expectedResult = Boolean.parseBoolean(result);
+		assertEquals(expectedResult,lastTransferResult);
 	}
 
 }
