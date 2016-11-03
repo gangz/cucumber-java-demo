@@ -1,7 +1,7 @@
 package cucumber.demo.bank;
 
 import cucumber.api.java.en.*;
-
+import static org.junit.Assert.*;
 public class BankSteps {
 
 	@Given("^Create an account '(\\w+)'")
@@ -18,12 +18,16 @@ public class BankSteps {
 	
 	@Given("^Transfer (\\d+) from account '(\\w+)' to '(\\w+)'$")
 	public void transfer_from_account_to(int amount, String accountOrigin, String accountDestination) throws Throwable {
-		System.out.println("Transfer "+amount+" from account:"  +accountOrigin + " to account:" + accountDestination);
+		Account accountFrom = AccountManager.instance().getAccount(accountOrigin);
+		Account accountTo = AccountManager.instance().getAccount(accountDestination);
+		AccountTransferService service = new AccountTransferService();
+		service.transfer(accountFrom, accountTo, amount);
 	}
 	
 	@Then("^The account '(\\w+)' should have (\\d+)$")
-	public void the_account_should_have(String accountId, int amount) throws Throwable {
-		System.out.println("Check account "+ accountId + " balance " + amount);
+	public void account_should_have(String accountId, int amount) throws Throwable {
+		Account account = AccountManager.instance().getAccount(accountId);
+		assertEquals(amount,account.getBalance());
 	}
 
 }

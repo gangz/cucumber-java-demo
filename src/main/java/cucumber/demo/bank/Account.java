@@ -14,4 +14,13 @@ public class Account {
 		balance+=amount;
 	}
 
+	public int getBalance() {
+		return balance;
+	}
+
+	public void decrease(int amount) {
+		if (amount<=balance)
+			balance-=amount;
+	}
+
 }
