@@ -5,13 +5,14 @@ import cucumber.api.java.en.*;
 public class BankSteps {
 
 	@Given("^Create an account '(\\w+)'")
-	public void create_an_account_as_origin_account(String accountId) throws Throwable {
-		System.out.println("Create an account:" + accountId);
+	public void create_an_account(String accountId) throws Throwable {
+		AccountManager.instance().create(accountId);
 	}
 	
 	@Given("^Save (\\d+) to account '(\\w+)'$")
 	public void save_to_account(int amount, String accountId) throws Throwable {
-		System.out.println("Save "+amount+" to account:" + accountId);
+		Account account = AccountManager.instance().getAccount(accountId);
+		account.increase(amount);
 	}
 	
 	
