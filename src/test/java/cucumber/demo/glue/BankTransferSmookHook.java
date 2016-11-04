@@ -1,4 +1,4 @@
-package cucumber.demo.bank.hooks;
+package cucumber.demo.glue;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
