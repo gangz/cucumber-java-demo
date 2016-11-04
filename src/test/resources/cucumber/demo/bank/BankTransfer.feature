@@ -1,5 +1,6 @@
 #language: en
 
+@BankTransferFeature
 Feature: Bank Transfer
 	As a user, I want to transfer money from one account to another account.
 	After transfer, the money of original account and destination account should
