@@ -1,4 +1,4 @@
-package cucumber.demo.bank;
+package cucumber.demo.bank.steps;
 
 import cucumber.api.java.After;
 import cucumber.api.java.zh_cn.*;

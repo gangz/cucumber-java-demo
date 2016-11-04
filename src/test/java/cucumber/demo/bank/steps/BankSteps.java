@@ -1,6 +1,10 @@
-package cucumber.demo.bank;
+package cucumber.demo.bank.steps;
 
 import cucumber.api.java.en.*;
+import cucumber.demo.bank.Account;
+import cucumber.demo.bank.AccountManager;
+import cucumber.demo.bank.AccountTransferService;
+
 import static org.junit.Assert.*;
 public class BankSteps {
 
