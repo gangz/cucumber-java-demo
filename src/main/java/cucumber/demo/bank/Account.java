@@ -5,10 +5,11 @@ public class Account {
 	private String accountId;
 	private int balance;
 
-	public Account(String accountId) {
+	public Account(String accountId,int balance) {
 		this.accountId = accountId;
-		this.balance = 0;
+		this.balance = balance;
 	}
+	
 
 	public void increase(int amount) {
 		balance+=amount;
@@ -21,6 +22,10 @@ public class Account {
 	public void decrease(int amount) {
 		if (amount<=balance)
 			balance-=amount;
+	}
+
+	public String getId() {
+		return accountId;
 	}
 
 }

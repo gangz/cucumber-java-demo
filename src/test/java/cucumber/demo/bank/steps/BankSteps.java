@@ -1,11 +1,14 @@
 package cucumber.demo.bank.steps;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.*;
 import cucumber.demo.bank.Account;
 import cucumber.demo.bank.AccountManager;
 import cucumber.demo.bank.AccountTransferService;
 
 import static org.junit.Assert.*;
+
+import java.util.List;
 public class BankSteps {
 
 	private boolean lastTransferResult;
@@ -42,4 +45,10 @@ public class BankSteps {
 		assertEquals(expectedResult,lastTransferResult);
 	}
 
+	@Given("^The following accounts:$")
+	public void createAccount(List<Account> accounts){
+		for (Account account:accounts){
+			AccountManager.instance().addAccount(account);
+		}
+	}
 }

@@ -16,7 +16,7 @@ public class AccountManager {
 	}
 	public Account create(String accountId) {
 		if (accounts.get(accountId)!=null) return accounts.get(accountId);
-		Account account = new Account(accountId);
+		Account account = new Account(accountId,0);
 		accounts.put(accountId, account);
 		return account;
 	}
@@ -25,6 +25,9 @@ public class AccountManager {
 	}
 	public void reset() {
 		accounts = new HashMap<>();
+	}
+	public void addAccount(Account account) {
+		accounts.put(account.getId(), account);
 	}
 
 }
