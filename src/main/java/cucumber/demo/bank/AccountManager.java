@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class AccountManager {
 	HashMap<String, Account> accounts;
 	private AccountManager(){
-		accounts = new HashMap<>();
+		accounts = new HashMap<String, Account>();
 		
 	}
 	private static AccountManager inst=null;
