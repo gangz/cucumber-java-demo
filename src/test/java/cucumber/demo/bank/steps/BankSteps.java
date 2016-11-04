@@ -5,10 +5,14 @@ import cucumber.api.java.en.*;
 import cucumber.demo.bank.Account;
 import cucumber.demo.bank.AccountManager;
 import cucumber.demo.bank.AccountTransferService;
+import cucumber.demo.bank.Person;
+import gherkin.formatter.model.DataTableRow;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 public class BankSteps {
 
 	private boolean lastTransferResult;
@@ -50,5 +54,22 @@ public class BankSteps {
 		for (Account account:accounts){
 			AccountManager.instance().addAccount(account);
 		}
+	}
+	
+	/*
+	 * | name | value |
+          | OrderNumber | 1 |
+          | Name | Zhang San|
+          | Age | 20|
+          | Height| 180|
+	 */
+	@Given("^Create a complex data structure with:$")
+	public void create_a_complex_data_structure_with(DataTable data) throws Throwable {
+		Map<String, String> map = data.asMap(String.class, String.class);
+		Person p = new Person();
+		p.orderNumber = map.get("OrderNumber");
+		p.name =  map.get("Name");
+		p.age = Integer.parseInt(map.get("Age"));
+		p.height = Integer.parseInt(map.get("Height"));
 	}
 }

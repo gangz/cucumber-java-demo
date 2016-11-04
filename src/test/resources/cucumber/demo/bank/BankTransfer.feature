@@ -10,8 +10,12 @@ Feature: Bank Transfer
 		* Create an account '0001' as origin account
 		* Save 100 to account '0001'
 		* Create an account '0002' as destination account
-
-
+        * Create a complex data structure with:
+          | OrderNumber |1|
+          | Name |Zhang San|
+          | Age | 20|
+          | Height|180|
+          
 	@Smoke
 	@BankSuccessScenario
 	Scenario: Success transfer
@@ -33,3 +37,4 @@ Feature: Bank Transfer
 		When Transfer 30 from account '003' to '004'
 		Then The account '003' should have 70
 		And The account '004' should have 30
+		
