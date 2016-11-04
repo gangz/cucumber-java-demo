@@ -9,7 +9,8 @@ Feature: Bank Transfer
 		* Create an account '0001' as origin account
 		* Save 100 to account '0001'
 		* Create an account '0002' as destination account
-	
+		
+	@Smoke
 	Scenario: Success transfer
 		When Transfer 30 from account '0001' to '0002'
 		Then The account '0001' should have 70
