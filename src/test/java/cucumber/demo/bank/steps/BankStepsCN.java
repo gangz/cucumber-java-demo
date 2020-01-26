@@ -1,7 +1,6 @@
 package cucumber.demo.bank.steps;
 
-import cucumber.api.java.After;
-import cucumber.api.java.zh_cn.*;
+import io.cucumber.java.zh_cn.假如;
 
 public class BankStepsCN {
 	

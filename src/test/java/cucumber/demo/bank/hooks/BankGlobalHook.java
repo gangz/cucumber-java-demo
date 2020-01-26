@@ -1,7 +1,7 @@
 package cucumber.demo.bank.hooks;
 
-import cucumber.api.java.After;
 import cucumber.demo.bank.AccountManager;
+import io.cucumber.java.After;
 
 public class BankGlobalHook {
 	@After
