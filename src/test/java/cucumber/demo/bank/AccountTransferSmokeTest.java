@@ -10,9 +10,8 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"pretty","json:target/json/output.json","html:target/html/"},
-        features = {"src/test/resources/cucumber/demo/bank/BankTransfer.feature"},
-        tags={"@Smoke"},
-        glue={"cucumber/demo/bank","cucumber/demo/glue"}
+        features = {"src/test/resources/cucumber/demo/bank/BankTransfer-zhCN.feature"},
+        tags={"@Smoke"}
 		)
 public class AccountTransferSmokeTest {
 
