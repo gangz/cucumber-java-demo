@@ -5,6 +5,8 @@ import cucumber.demo.bank.AccountManager;
 import cucumber.demo.bank.AccountTransferService;
 import io.cucumber.java.zh_cn.假如;
 
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 
 public class BankStepsCN {
@@ -33,5 +35,14 @@ public class BankStepsCN {
 	public void 账户_应该有_元(String accountId, int amount) throws Throwable {
 		Account account = AccountManager.instance().getAccount(accountId);
 		assertEquals(amount,account.getBalance());
+	}
+
+	@假如("创建账户：$")
+	public void createAccount(io.cucumber.datatable.DataTable data) {
+		Map<String, String> map = data.asMap(String.class, String.class);
+		String accountId = map.get("账号");
+		Integer initAmount = Integer.parseInt(map.get("初始金额"));
+		Account account = new Account(accountId,initAmount);
+		AccountManager.instance().addAccount(account);
 	}
 }
