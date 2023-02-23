@@ -3,8 +3,12 @@ package cucumber.demo.bank.steps;
 import cucumber.demo.bank.Account;
 import cucumber.demo.bank.AccountManager;
 import cucumber.demo.bank.AccountTransferService;
+import io.cucumber.java.DefaultDataTableCellTransformer;
+import io.cucumber.java.DefaultDataTableEntryTransformer;
+import io.cucumber.java.DefaultParameterTransformer;
 import io.cucumber.java.zh_cn.假如;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -44,5 +48,10 @@ public class BankStepsCN {
 		Integer initAmount = Integer.parseInt(map.get("初始金额"));
 		Account account = new Account(accountId,initAmount);
 		AccountManager.instance().addAccount(account);
+	}
+
+	@假如("创建如下账户：")
+	public void 创建如下账户(List<Account> account) {
+		System.out.println(account);
 	}
 }
